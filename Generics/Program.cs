@@ -11,7 +11,7 @@ namespace Generics
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Maximum float number is:{0}",Maximum.Maxnumber(18.5f,23.4f,16.5f));
+            Console.WriteLine("Maximum string is:{0}",Maximum.Maxnumber("Apple", "Peach", "Banana"));
             Console.ReadLine();
             
         }
