@@ -7,38 +7,34 @@ using System.Threading.Tasks;
 namespace Generics_cs
 {
     /// <summary>
-    /// UC2 Finding Maximum floating number
+    /// UC4 Finding max num in array
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    class Maximum  //T is referes to a type
+    class GenericMethod<T> where T : IComparable //T perform multiple Operations when we compare values
     {
+        public T[] value;
 
-        public static string Maxnumber(string first, string second, string third)
+        /// method for initialize  the contructors of instance variables
+        public GenericMethod(T[] value)
         {
-            //returns true if the both condition are true 
-            
-            if (first.CompareTo(second) > 0 && first.CompareTo(third) > 0)
-            {
-                return first;
-            }
-            //returns true if the both condition are true 
-            
-            else if (second.CompareTo(first) > 0 && second.CompareTo(third) > 0)
-            {
-                return second;
-            }
-            //returns true if the both condition are true
-            
-            else if (third.CompareTo(first) > 0 && third.CompareTo(second) > 0)
-            {
-                return third;
-            }
-            else
-            {
-                //if the 2 or more values are same then else block will be executed
-                Console.WriteLine("More than 2 numbers are same");
-                return default;
-            }
+            this.value = value;  //parameterized constructor
+        }
+        public T[] sort(T[] values) /// method is created for sorting values
+        {
+            Array.Sort(values); //sorting the Array
+            return values; 
+        }
+
+        public T MaxValue(params T[] values) //params use for when programer dont have any prior knowledge about the number of parameter to give
+        {
+            T[] sortedArray = sort(this.value); //sorted array is stored in sort array
+            return sortedArray[sortedArray.Length - 1]; //array starts from 0
+        }
+
+        public void PrintMaxValue() //method created for printing the max generic value
+        {
+            var max = MaxValue(this.value); //from max value method
+            Console.WriteLine("The maximum value is : " + max);
         }
     }
 }
